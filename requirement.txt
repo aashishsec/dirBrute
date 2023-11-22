@@ -2,4 +2,3 @@ requests
 colorama
 argparse
 concurrent.futures
-random
