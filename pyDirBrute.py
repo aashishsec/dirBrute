@@ -83,11 +83,22 @@ def DirBrute(domain,path):
 
             if domain[0:5]=="https" or domain[0:7]=="http://":
                   
-                  url=f"{domain}/{path}"
+                  if path[0]=="/":
+                        
+                       url=f"{domain}{path}"
+
+                  else:
+                        
+                        url=f"{domain}/{path}"
 
             else:
-                  
-                  url="https://{}/{}".format(domain,path)
+                    if path[0]=="/":
+                       
+                       url="https://{}{}".format(domain,path)
+
+                    else:
+
+                        url="https://{}/{}".format(domain,path)
 
             request=requests.get(url,timeout=10)
 
