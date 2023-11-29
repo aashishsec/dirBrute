@@ -56,6 +56,11 @@ options:
                         [INFO]: Threading level to make fast process
 ```
 
+## Tool Output
+
+![image](https://github.com/aashishsec/dirBrute/assets/65489287/a5f75f03-0542-41b7-bdee-ce38bc3a6331)
+
+
 ## Contributing
 
 - Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
