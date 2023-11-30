@@ -1,5 +1,7 @@
 import requests,colorama,random,argparse,concurrent.futures
 
+from datetime import datetime
+
 from colorama import Fore, Back, Style
 
 colorama.init(autoreset=True)
@@ -46,6 +48,11 @@ def banner():
         DirBrute is a tool designed to efficiently probe for alive endpoints from a provided wordlist list.
           
       ''')
+    print("-" * 80)
+
+    print(f"{bold}{random_color}pyDirBrute starting at {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
+
+    print("-" * 80)
 
 
 parser=argparse.ArgumentParser(description=f"{bold}{random_color} DirBrute is a tool designed to efficiently probe for alive endpoints from a provided wordlist list.")
@@ -58,7 +65,7 @@ parser.add_argument('-o','--output',metavar='output',type=str,default="DirBrute_
 
 parser.add_argument("-c", "--concurrency", help=f"[{bold}{random_color}INFO{random_color}]: {bold}{random_color}Concurrency level to make fast process", type=int, default=10)
 
-parser.add_argument("-t", "--threads", help=f"[{bold}INFO{random_color}]: {random_color}{random_color}Threading level to make fast process", type=int, default=4)
+parser.add_argument("-t", "--threads", help=f"[{bold}INFO{random_color}]: {random_color}{random_color}Threading level to make fast process", type=int, default=10)
 
 args=parser.parse_args()
 
