@@ -58,8 +58,7 @@ options:
 
 ## Tool Output
 
-![image](https://github.com/aashishsec/dirBrute/assets/65489287/0075987f-5043-44fc-871a-5e15d1ba0c74)
-
+![image](https://github.com/aashishsec/dirBrute/assets/65489287/5344a922-3919-4e37-b342-1996bb0d67a7)
 
 
 ## Contributing
