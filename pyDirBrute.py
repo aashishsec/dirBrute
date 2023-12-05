@@ -30,6 +30,55 @@ random_color = random.choice(colors)
 
 bold = Style.BRIGHT
 
+USER_AGENT  = [
+        
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246",
+
+    "Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36",
+
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9",
+
+    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36",
+
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36",
+
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/99.0.1150.36",
+
+    "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko",
+
+    "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36",
+
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:99.0) Gecko/20100101 Firefox/99.0",
+
+     ]
+     
+
+random_user_agent = random.choice(USER_AGENT)
+
+parser=argparse.ArgumentParser(description=f"{bold}{random_color} DirBrute is a tool designed to efficiently probe for alive endpoints from a provided wordlist list.")
+
+parser.add_argument('-d','--Domain',metavar='list',type=str,required=True,help=f"[{bold}{random_color}INFO]: {bold}{random_color}domain.")
+
+parser.add_argument('-w','--wordlist',metavar='list',type=str,required=True,help=f"[{bold}{random_color}INFO]: {bold}{random_color}List of wordlist.")
+
+parser.add_argument('-o','--output',metavar='output',type=str,default="DirBrute_output.txt",required=False,help=f"[{bold}{random_color}INFO]: {bold}{random_color}File to save our output.")
+
+parser.add_argument("-t", "--threads", help=f"[{bold}INFO{random_color}]: {random_color}{random_color}Threading level to make fast process", type=int, default=10)
+
+args=parser.parse_args()
+
+Domain=args.Domain
+
+output=args.output
+
+threads=args.threads
+
+wordlist=args.wordlist
+
+global_output=[]
+
+path=[]
+
 def banner():
 
     print(f'''{bold}{random_color}
@@ -54,32 +103,11 @@ def banner():
 
     print("-" * 80)
 
+    print(f"{bold}{random_color}[*] URL".ljust(20, " "), ":", Domain)
 
-parser=argparse.ArgumentParser(description=f"{bold}{random_color} DirBrute is a tool designed to efficiently probe for alive endpoints from a provided wordlist list.")
+    print(f"{bold}{random_color}[*] Wordlist".ljust(20, " "), ":",wordlist)
 
-parser.add_argument('-d','--Domain',metavar='list',type=str,required=True,help=f"[{bold}{random_color}INFO]: {bold}{random_color}domain.")
-
-parser.add_argument('-w','--wordlist',metavar='list',type=str,required=True,help=f"[{bold}{random_color}INFO]: {bold}{random_color}List of wordlist.")
-
-parser.add_argument('-o','--output',metavar='output',type=str,default="DirBrute_output.txt",required=False,help=f"[{bold}{random_color}INFO]: {bold}{random_color}File to save our output.")
-
-parser.add_argument("-c", "--concurrency", help=f"[{bold}{random_color}INFO{random_color}]: {bold}{random_color}Concurrency level to make fast process", type=int, default=10)
-
-parser.add_argument("-t", "--threads", help=f"[{bold}INFO{random_color}]: {random_color}{random_color}Threading level to make fast process", type=int, default=10)
-
-args=parser.parse_args()
-
-Domain=args.Domain
-
-output=args.output
-
-concurrency=args.concurrency
-
-threads=args.threads
-
-wordlist=args.wordlist
-
-global_output=[]
+    print(f"{bold}{random_color}[*] Threads".ljust(20, " "), ":", threads)
 
 
 def DirBrute(domain,path):
@@ -107,7 +135,7 @@ def DirBrute(domain,path):
 
                         url="https://{}/{}".format(domain,path)
 
-            request=requests.get(url,timeout=10)
+            request=requests.get(url,timeout=30,headers={"User-Agent": random_user_agent},allow_redirects=True)
 
             statusCode=request.status_code
 
@@ -127,6 +155,10 @@ def DirBrute(domain,path):
 
                    global_output.append(f"(Status: {statusCode}) --[Size: {len(request.content)}]---> {url}\n")
 
+            elif statusCode==404 or statusCode==429:
+                 
+                 pass
+            
             else:
                
                 print(f"{random_color}(Status: {statusCode}) --[Size: {len(request.content)}]---> {url}")
@@ -154,7 +186,7 @@ def threading(Domain,paths):
     
     try:
 
-        with concurrent.futures.ThreadPoolExecutor(max_workers=concurrency*threads) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as executor:
             
            futures = [executor.submit(DirBrute, Domain,path) for path in paths]
            
@@ -175,7 +207,7 @@ def main(wordlist):
         
     banner()
 
-    path=[]
+    global path
     
     try:
         with open(wordlist,"r") as p:
@@ -185,6 +217,10 @@ def main(wordlist):
            for p in paths:
           
                path.append(p)
+        
+        print(f"{bold}{random_color}[*] No.of Words".ljust(20, " "), ":", len(path))
+
+        print("-" * 80)
 
         threading(Domain,path)
 
