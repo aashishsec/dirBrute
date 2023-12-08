@@ -1,6 +1,8 @@
 # dirBrute
 
-- DirBrute is a tool designed to efficiently probe for alive endpoints from a provided wordlist list.
+- DirBrute is a powerful directory brute-forcing tool designed for efficient web application security testing.
+  
+- It's a go-to for uncovering hidden paths and directories, providing valuable insights into potential vulnerabilities.
 
 - The Output contains with statuscode and content length.
 
