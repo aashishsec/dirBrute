@@ -1,4 +1,4 @@
-# dirBrute
+# dirBrute - Directory Brute Forcing Tool
 
 - DirBrute is a powerful directory brute-forcing tool designed for efficient web application security testing.
   
