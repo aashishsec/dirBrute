@@ -1,6 +1,6 @@
 # dirBrute - Directory Brute Forcing Tool
 
-(Tool Link)[https://github.com/aashishsec/dirBrute/]
+[Tool Link](https://github.com/aashishsec/dirBrute/)
 
 - DirBrute is a powerful directory brute-forcing tool designed for efficient web application security testing.
   
