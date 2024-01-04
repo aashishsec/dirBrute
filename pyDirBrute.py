@@ -92,7 +92,7 @@ def banner():
       
         Author   : Aashish💕💕  
                                               
-        Github   : https://github.com/aashish36
+        Github   : https://github.com/aashishsec
           
         DirBrute is a tool designed to efficiently probe for alive endpoints from a provided wordlist list.
           
