@@ -254,7 +254,7 @@ def threading(Domain,paths):
         pass 
 
 
-def main(wordlist):
+def main():
         
     banner()
 
@@ -289,5 +289,5 @@ def main(wordlist):
 
 if __name__ == "__main__":
 
-    main(wordlist)
+    main()
 
