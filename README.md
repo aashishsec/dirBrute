@@ -16,7 +16,7 @@
 - This DirBrute tool also had threading which will speed up the process.
   
 -  Works in all platforms.
-- 
+  
 ## Features
 
 1. **User-Agent Rotation:**
