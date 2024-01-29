@@ -17,7 +17,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'dirbrute=dirbrute.dirbrute:main',
+            'dirBrute=dirBrute.dirBrute:main',
         ],
     },
 )
