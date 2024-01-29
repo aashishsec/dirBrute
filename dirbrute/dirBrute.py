@@ -139,7 +139,7 @@ def checking_vesion():
                 
                     message = "latest"
                 
-                    print(f"[{blue}Version{reset}]: {bold}{white}httpAlive current version {version} ({green}{message}{reset})")
+                    print(f"[{blue}Version{reset}]: {bold}{white}dirBrute current version {version} ({green}{message}{reset})")
                 
                     t.sleep(1)
                 
@@ -147,12 +147,12 @@ def checking_vesion():
                 
                     message ="outdated"
                 
-                    print(f"[{blue}Version{reset}]: {bold}{white}httpAlive current version {version} ({red}{message}{reset})")
+                    print(f"[{blue}Version{reset}]: {bold}{white}dirBrute current version {version} ({red}{message}{reset})")
 
             
     except KeyboardInterrupt as e:
         
-            print(f"[{blue}INFO{random_color}]: httpAlive says BYE!")
+            print(f"[{blue}INFO{random_color}]: dirBrute says BYE!")
         
             exit()
                 
