@@ -47,16 +47,29 @@
 ## Installation
 
 - Clone the repository to your local machine.
-  
-- Install the required dependencies using pip
 
+### Method 1
 
 ```bash
+
 git clone https://github.com/aashish36/dirBrute.git
 
 cd dirBrute
 
 pip install -r requirements.txt
+
+```
+
+### Method 2
+
+```bash
+
+git clone https://github.com/aashish36/dirBrute.git
+
+cd dirBrute
+
+pip install .
+
 
 ```
 
