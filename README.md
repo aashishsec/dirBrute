@@ -5,6 +5,8 @@
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/aashishsec/dirBrute) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/aashishsec/dirBrute) [![GitHub license](https://img.shields.io/github/license/aashishsec/dirBrute)](https://github.com/aashishsec/dirBrute/blob/main/LICENSE) [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/aashishsec/)
 
+## Overview
+
 - DirBrute is a powerful directory brute-forcing tool designed for efficient web application security testing.
   
 - It's a go-to for uncovering hidden paths and directories, providing valuable insights into potential vulnerabilities.
